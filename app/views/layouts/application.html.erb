@@ -17,15 +17,22 @@
       </ul>
       <section class="top-bar-section">
 	<!-- Right Nav Section -->
+	<% if logged_in? %>
 	<ul class="right">
-	  <li class="active"><a href="#">Abmelden</a></li>
+	  <li class="active"><%= link_to "Abmelden", logout_path, method: :delete %></li>
 	</ul>
 
 	<!-- Left Nav Section -->
 	<ul class="left">
 	  <li><%= link_to 'Quiz', new_quiz_path %></li>
-	  <li><a href="/questions">Fragen</a></li>
+	  <li><%= link_to 'Fragen', new_question_path %></li>
+	  <li><%= link_to "Profil", current_user %></li>
 	</ul>
+	<% else %>
+	<ul class="right">
+	  <li class="active"><%= link_to "Anmelden", login_path, method: :get %></li>
+	</ul>
+	<% end %>
       </section>
     </nav>
     <div class="container row">
