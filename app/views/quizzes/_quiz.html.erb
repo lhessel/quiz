@@ -1,0 +1,45 @@
+<div class="question" data-result="correct">
+<h1>Frage <%= @difficulty %></h1>
+
+<div class="row">
+
+  <div class="small-6 small-centered columns">
+
+    <%=form_tag('/quizzes/quiz', remote: true, :id => "quiz_form") do %>
+
+      <%=hidden_field_tag("difficulty", (@difficulty.to_i + 1)) %>
+      <%=hidden_field_tag("question", @question.id) %>
+
+    <div class="row">
+      <div class="small-6 small-centered columns">
+	<h1 class="subheader text-center"><%= @question.question %></h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="small-6 columns">
+	<p class="answer-option button" data-answer="0">A: <%= @question.answer0 %></p>
+	<span class="answer-check"><%= radio_button_tag "answer", 0 %></span>
+      </div>
+      <div class="small-6 columns">
+	<p class="answer-option button" data-answer="1">B: <%= @question.answer1 %></p>
+	<span class="answer-check"><%= radio_button_tag "answer", 1 %></span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="small-6 columns">
+	<p class="answer-option button" data-answer="2">C: <%= @question.answer2 %></p>
+	<span class="answer-check"><%= radio_button_tag "answer", 2 %></span>
+      </div>
+      <div class="small-6 columns">
+	<p class="answer-option button" data-answer="3">D: <%= @question.answer3 %></p>
+	<span class="answer-check"><%= radio_button_tag "answer", 3 %></span>
+      </div>
+    </div>
+
+    <% end %>
+
+  </div>
+
+</div>
+
+</div>
