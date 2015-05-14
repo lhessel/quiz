@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150306090821) do
+ActiveRecord::Schema.define(version: 20150514175441) do
 
   create_table "questions", force: true do |t|
     t.string   "question"
@@ -27,17 +27,21 @@ ActiveRecord::Schema.define(version: 20150306090821) do
   end
 
   create_table "quizzes", force: true do |t|
-    t.integer  "user"
     t.integer  "finalDifficulty"
     t.integer  "timestamp"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  create_table "quizzes_users", id: false, force: true do |t|
+    t.integer "user_id", null: false
+    t.integer "quiz_id", null: false
+  end
+
   create_table "users", force: true do |t|
     t.string   "username"
     t.string   "password"
-    t.integer  "contributedQuestions"
+    t.integer  "contributedQuestions", default: 0, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "password_digest"

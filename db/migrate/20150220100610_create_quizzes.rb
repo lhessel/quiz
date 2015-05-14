@@ -1,7 +1,6 @@
 class CreateQuizzes < ActiveRecord::Migration
   def change
     create_table :quizzes do |t|
-      t.integer :user
       t.integer :finalDifficulty
       t.integer :timestamp
 
