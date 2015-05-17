@@ -41,12 +41,10 @@ ActiveRecord::Schema.define(version: 20150514175441) do
   create_table "users", force: true do |t|
     t.string   "username"
     t.string   "password"
-    t.integer  "contributedQuestions", default: 0, null: false
+    t.integer  "contributedQuestions"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "password_digest"
   end
-
-  add_index "users", ["username"], name: "username", unique: true, using: :btree
 
 end
