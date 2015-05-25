@@ -3,6 +3,8 @@ require 'test_helper'
 class QuizzesControllerTest < ActionController::TestCase
   setup do
     @quiz = quizzes(:one)
+		@user = users(:one)
+		log_in_as(@user)
   end
 
   test "should get index" do
@@ -18,7 +20,7 @@ class QuizzesControllerTest < ActionController::TestCase
 
   test "should create quiz" do
     assert_difference('Quiz.count') do
-      post :create, quiz: { finalDifficulty: @quiz.finalDifficulty, timestamp: @quiz.timestamp, user: @quiz.user }
+      post :create, quiz: { finalDifficulty: @quiz.finalDifficulty, timestamp: @quiz.timestamp }
     end
 
     assert_redirected_to quiz_path(assigns(:quiz))

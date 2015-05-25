@@ -3,7 +3,9 @@
 one:
   finalDifficulty: 1
   timestamp: 1
+  users: max, two
 
 two:
   finalDifficulty: 1
   timestamp: 1
+  users: max, two

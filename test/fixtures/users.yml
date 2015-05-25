@@ -2,4 +2,18 @@
 
 max:
   username: Max
+  password: password
   password_digest: <%= User.digest('password') %>
+  contributedQuestions: 0
+  
+one:
+  username: one
+  password: password
+  password_digest: <%= User.digest('password') %>
+  contributedQuestions: 0
+  
+two:
+  username: two
+  password: password
+  password_digest: <%= User.digest('password') %>
+  contributedQuestions: 0
