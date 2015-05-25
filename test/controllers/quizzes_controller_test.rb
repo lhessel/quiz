@@ -3,6 +3,8 @@ require 'test_helper'
 class QuizzesControllerTest < ActionController::TestCase
   setup do
     @quiz = quizzes(:one)
+		@prev_question = questions(:one)
+		@question = questions(:two)
 		@user = users(:one)
 		log_in_as(@user)
   end
@@ -48,4 +50,25 @@ class QuizzesControllerTest < ActionController::TestCase
 
     assert_redirected_to quizzes_path
   end
+	
+	test "should show win" do
+		get :win
+		assert_response :success
+	end
+	
+	test "should start quiz" do
+		get :quiz, difficulty: 1
+		assert_response :success
+	end
+	
+	test "should win quiz" do
+		get :quiz, { :difficulty => 4, :question => @question.id, :answer => @question.correctAnswer}
+		assert_redirected_to(controller: "quizzes", action: "win")
+	end
+	
+	test "should lose quiz" do
+		get :quiz, { :difficulty => 2, :question => @question.id, :answer => 3}
+		assert_response :success
+		assert_select '.wrong_answer'
+	end
 end

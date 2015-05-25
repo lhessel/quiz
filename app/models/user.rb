@@ -4,10 +4,6 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 6 }
 	has_and_belongs_to_many :quizzes
 	
-	def validuser
-		return true
-	end
-	
 	def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
                                                   BCrypt::Engine.cost

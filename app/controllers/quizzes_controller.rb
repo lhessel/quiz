@@ -38,7 +38,6 @@ class QuizzesController < ApplicationController
 					format.html { render 'wrong' }
 					format.js { render 'wrong', :content_type=>'text/html', :layout=>false }
 				end
-				#redirect_to action: "wrong", difficulty: @difficulty
 				return
 			end
 		end
@@ -56,13 +55,6 @@ class QuizzesController < ApplicationController
 		respond_to do |format|
 			format.html
 			format.js { render '_quiz', :content_type=>'text/html', :layout=>false }
-		end
-	end
-	
-	def wrong
-		respond_to do |format|
-			format.html
-			format.js { render 'wrong', :content_type=>'text/html', :layout=>false }
 		end
 	end
 

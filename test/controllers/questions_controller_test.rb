@@ -25,7 +25,19 @@ class QuestionsControllerTest < ActionController::TestCase
 
     assert_redirected_to question_path(assigns(:question))
   end
+	
+	test "should not create invalid question" do
+		post :create, question: {question: nil}
+		assert_response :ok
+		assert_select '.error_messages ul'
+	end
 
+	test "should not update invalid question" do
+		patch :update, id: @question, question: {question: nil}
+		assert_response :ok
+		assert_select '.error_messages ul'
+	end
+	
   test "should show question" do
     get :show, id: @question
     assert_response :success
