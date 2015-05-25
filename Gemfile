@@ -15,6 +15,7 @@ gem 'coffee-rails', '~> 4.0.0'
 # gem 'therubyracer',  platforms: :ruby
 gem 'coffee-script-source', '1.8.0'
 gem 'simplecov', :require => false, :group => :test
+gem 'zurb-foundation', '~> 4.3.2'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

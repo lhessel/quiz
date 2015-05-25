@@ -4,11 +4,17 @@
 
   <%=hidden_field_tag("difficulty", "1") %>
   
-  <%=label_tag "teammate", "Mitspieler" %>
-  <%=select_tag("teammate", options_from_collection_for_select(User.all.pluck(:id, :username), :first, :last), include_blank: true) %>
+<div class="row">
+  <div class="large-6 columns">
+    <%=label_tag "teammate", "Mitspieler" %>
+    <%=select_tag("teammate", options_from_collection_for_select(User.all.pluck(:id, :username), :first, :last), include_blank: true) %>
+  </div>
+</div>
 
-  <div class="actions"><%=submit_tag "Quiz starten" %></div>
+<div class="row">
+  <div class="large-2 columns">
+    <%=submit_tag "Quiz starten", class: "button" %>
+  </div>
+</div>
 
 <% end %>
-
-<%= link_to 'Back', quizzes_path %>
