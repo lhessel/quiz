@@ -37,7 +37,7 @@ class QuizzesControllerTest < ActionController::TestCase
   end
 
   test "should update quiz" do
-    patch :update, id: @quiz, quiz: { finalDifficulty: @quiz.finalDifficulty, timestamp: @quiz.timestamp, user: @quiz.user }
+    patch :update, id: @quiz, quiz: { finalDifficulty: @quiz.finalDifficulty, timestamp: @quiz.timestamp }
     assert_redirected_to quiz_path(assigns(:quiz))
   end
 

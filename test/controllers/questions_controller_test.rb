@@ -20,7 +20,7 @@ class QuestionsControllerTest < ActionController::TestCase
 
   test "should create question" do
     assert_difference('Question.count') do
-      post :create, question: { answer0: @question.answer0, answer1: @question.answer1, answer2: @question.answer2, answer3: @question.answer3, contributedBy: @question.contributedBy, correctAnswer: @question.correctAnswer, difficulty: @question.difficulty }
+      post :create, question: {question: @question.question, answer0: @question.answer0, answer1: @question.answer1, answer2: @question.answer2, answer3: @question.answer3, contributedBy: @question.contributedBy, correctAnswer: @question.correctAnswer, difficulty: @question.difficulty }
     end
 
     assert_redirected_to question_path(assigns(:question))

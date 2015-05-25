@@ -3,7 +3,7 @@
 <table>
   <thead>
     <tr>
-      <th>User</th>
+      <th>Users</th>
       <th>Finaldifficulty</th>
       <th>Timestamp</th>
       <th colspan="3"></th>
@@ -13,7 +13,11 @@
   <tbody>
     <% @quizzes.each do |quiz| %>
       <tr>
-        <td><%= quiz.user %></td>
+        <td>
+	  <% quiz.users.each do |user| %>
+	    <%=  user.username %>
+	  <% end %>
+	</td>
         <td><%= quiz.finalDifficulty %></td>
         <td><%= quiz.timestamp %></td>
         <td><%= link_to 'Show', quiz %></td>

@@ -27,13 +27,13 @@ class QuestionsController < ApplicationController
   def create
     @question = Question.new(question_params)
 		@question.contributedBy = current_user.id
-		user = User.find_by(id: current_user.id)
+		
 		if current_user.contributedQuestions == nil
 			cq = 1
 		else
 			cq = current_user.contributedQuestions+1
 		end
-		user.update_attribute('contributedQuestions', cq)
+		current_user.update_column('contributedQuestions', cq)
 		
     respond_to do |format|
       if @question.save

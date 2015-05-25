@@ -1,8 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>User:</strong>
-  <%= @quiz.user %>
+  <strong>Users:</strong>
+  <% @quiz.users.each do |user| %>
+    <p><%=  user.username %></p>
+  <% end %>
 </p>
 
 <p>

@@ -1,5 +1,6 @@
 class QuizzesController < ApplicationController
 	before_filter :login_required
+	before_action :set_quiz, only: [:show, :edit, :update, :destroy]
 
   # GET /quizzes
   # GET /quizzes.json
@@ -30,6 +31,9 @@ class QuizzesController < ApplicationController
 		if @difficulty.to_i > 1
 			@prev_question = Question.find(params[:question])
 			if @prev_question.correctAnswer != params[:answer].to_i
+				@quiz = Quiz.create(:finalDifficulty => @difficulty.to_i-1, :timestamp => Time.now)
+				@quiz.users << current_user
+				@quiz.save
 				respond_to do |format|
 					format.html { render 'wrong' }
 					format.js { render 'wrong', :content_type=>'text/html', :layout=>false }
@@ -40,6 +44,9 @@ class QuizzesController < ApplicationController
 		end
 		
 		if @difficulty.to_i > 3
+			@quiz = Quiz.create(:finalDifficulty => @difficulty.to_i-1, :timestamp => Time.now)
+			@quiz.users << current_user
+			@quiz.save
 			redirect_to action: "win"
 			return
 		end
@@ -53,7 +60,6 @@ class QuizzesController < ApplicationController
 	end
 	
 	def wrong
-		@difficulty = params[:difficulty]
 		respond_to do |format|
 			format.html
 			format.js { render 'wrong', :content_type=>'text/html', :layout=>false }
@@ -112,6 +118,6 @@ class QuizzesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def quiz_params
-      params.require(:quiz).permit(:user, :finalDifficulty, :timestamp)
+      params.require(:quiz).permit(:finalDifficulty, :timestamp, user_ids:[])
     end
 end
