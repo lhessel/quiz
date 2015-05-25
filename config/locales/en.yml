@@ -20,4 +20,15 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  helpers:
+    label:
+      question:
+        question: "Frage"
+        answer0: "Antwort A"
+        answer1: "Antwort B"
+        answer2: "Antwort C"
+        answer3: "Antwort D"
+        difficulty: "Schwierigkeitsgrad"
+      user:
+        username: "Nutername"
+        password: "Passwort"
