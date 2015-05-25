@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   validates :username,  presence: true, length: { maximum: 50 }
+	validates_uniqueness_of :username
   has_secure_password
   validates :password, length: { minimum: 6 }
 	has_and_belongs_to_many :quizzes
