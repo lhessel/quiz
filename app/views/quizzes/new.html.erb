@@ -3,6 +3,9 @@
 <%=form_tag do %>
 
   <%=hidden_field_tag("difficulty", "1") %>
+  
+  <%=label_tag "teammate", "Mitspieler" %>
+  <%=select_tag("teammate", options_from_collection_for_select(User.all.pluck(:id, :username), :first, :last), include_blank: true) %>
 
   <div class="actions"><%=submit_tag "Quiz starten" %></div>
 

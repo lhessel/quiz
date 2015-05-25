@@ -6,6 +6,7 @@ class QuizzesControllerTest < ActionController::TestCase
 		@prev_question = questions(:one)
 		@question = questions(:two)
 		@user = users(:one)
+		@teammate = users(:two)
 		log_in_as(@user)
   end
 
@@ -62,13 +63,24 @@ class QuizzesControllerTest < ActionController::TestCase
 	end
 	
 	test "should win quiz" do
-		get :quiz, { :difficulty => 4, :question => @question.id, :answer => @question.correctAnswer}
-		assert_redirected_to(controller: "quizzes", action: "win")
+    assert_difference('Quiz.count') do
+			get :quiz, { :difficulty => 4, :question => @question.id, :answer => @question.correctAnswer}
+			assert_redirected_to(controller: "quizzes", action: "win")
+		end
+	end
+	
+	test "should win quizwith teammate" do
+    assert_difference('Quiz.count') do
+			get :quiz, { :difficulty => 4, :question => @question.id, :answer => @question.correctAnswer, :teammate => @teammate}
+			assert_redirected_to(controller: "quizzes", action: "win")
+		end
 	end
 	
 	test "should lose quiz" do
-		get :quiz, { :difficulty => 2, :question => @question.id, :answer => 3}
-		assert_response :success
-		assert_select '.wrong_answer'
+    assert_difference('Quiz.count') do
+			get :quiz, { :difficulty => 2, :question => @question.id, :answer => 3}
+			assert_response :success
+			assert_select '.wrong_answer'
+		end
 	end
 end
