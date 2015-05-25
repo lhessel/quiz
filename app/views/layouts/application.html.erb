@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Rails1</title>
+    <title>Quiz</title>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag "application.js" %>
     <%= csrf_meta_tags %>
@@ -26,6 +26,7 @@
 	<ul class="left">
 	  <li><%= link_to 'Quiz', new_quiz_path %></li>
 	  <li><%= link_to 'Fragen', new_question_path %></li>
+	  <li><%= link_to 'Rangliste', quizzes_path %></li>
 	  <li><%= link_to "Profil", current_user %></li>
 	</ul>
 	<% else %>

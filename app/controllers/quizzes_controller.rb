@@ -5,7 +5,7 @@ class QuizzesController < ApplicationController
   # GET /quizzes
   # GET /quizzes.json
   def index
-    @quizzes = Quiz.all
+    @quizzes = Quiz.order('finalDifficulty DESC, timestamp DESC').all
   end
 
   # GET /quizzes/1
