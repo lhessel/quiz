@@ -23,9 +23,7 @@ $(document).ready(function() {
 	    if ($(data).find('.answer-option').length > 0 || $(data).find('.win').length > 0) {
 		buttons.correctAnswer();
 	    } else {
-		a = $(data).find('.wrong_answer');
-		console.log($(data).find('.wrong_answer').data('correctanswer'));
-		buttons.showCorrectAnswer($(data).find('.wrong_answer').data('correctanswer'));
+		buttons.showCorrectAnswer($(data).find('#wrong_answer').data('correctanswer'));
 	    }
 	}, 2000);
 	window.setTimeout(function() {
@@ -89,8 +87,8 @@ var answerButtons = function(formid) {
     this.showCorrectAnswer = function(correctAnswer) {
 	this.markedBtn.removeClass('marked');
 	this.markedBtn.addClass('incorrect');
-	console.log(correctAnswer);
-	this.buttons[correctAnswer].addClass('correct');
+	console.log($(this.buttons[correctAnswer]));
+	this.buttons[correctAnswer]['button'].addClass('correct');
     };
 
     this.sendForm = function() {
