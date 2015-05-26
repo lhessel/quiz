@@ -28,15 +28,14 @@ class QuestionsController < ApplicationController
     @question = Question.new(question_params)
 		@question.contributedBy = current_user.id
 		
-		if current_user.contributedQuestions == nil
-			cq = 1
-		else
-			cq = current_user.contributedQuestions+1
-		end
-		current_user.update_column('contributedQuestions', cq)
-		
     respond_to do |format|
       if @question.save
+				if current_user.contributedQuestions == nil
+					cq = 1
+				else
+					cq = current_user.contributedQuestions+1
+				end
+				current_user.update_column('contributedQuestions', cq)
         format.html { redirect_to @question, notice: 'Question was successfully created.' }
         format.json { render :show, status: :created, location: @question }
       else

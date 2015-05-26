@@ -1,44 +1,36 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Question:</strong>
+  <strong>Frage:</strong>
   <%= @question.question %>
 </p>
 
 <p>
-  <strong>Answer0:</strong>
+  <strong>Antwort 1:</strong>
   <%= @question.answer0 %>
 </p>
 
 <p>
-  <strong>Answer1:</strong>
+  <strong>Antwort 2:</strong>
   <%= @question.answer1 %>
 </p>
 
 <p>
-  <strong>Answer2:</strong>
+  <strong>Antwort 3:</strong>
   <%= @question.answer2 %>
 </p>
 
 <p>
-  <strong>Answer3:</strong>
+  <strong>Antwort 4:</strong>
   <%= @question.answer3 %>
 </p>
 
 <p>
-  <strong>Correctanswer:</strong>
+  <strong>richtige Antwort:</strong>
   <%= @question.correctAnswer %>
 </p>
 
 <p>
-  <strong>Difficulty:</strong>
+  <strong>Schwierigkeitsgrad:</strong>
   <%= @question.difficulty %>
 </p>
-
-<p>
-  <strong>Contributedby:</strong>
-  <%= @question.contributedBy %>
-</p>
-
-<%= link_to 'Edit', edit_question_path(@question) %> |
-<%= link_to 'Back', questions_path %>

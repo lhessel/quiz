@@ -4,6 +4,11 @@ class UsersControllerTest < ActionController::TestCase
   setup do
     @user = users(:one)
   end
+	
+	test "should show index" do
+		get :index
+		assert_response :success
+	end
 
   test "should get new" do
     get :new

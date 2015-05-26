@@ -32,7 +32,7 @@ class QuizzesController < ApplicationController
 		if @difficulty.to_i > 1
 			@prev_question = Question.find(params[:question])
 			if @prev_question.correctAnswer != params[:answer].to_i
-				saveQuiz
+				saveQuiz(1)
 				respond_to do |format|
 					format.html { render 'wrong' }
 					format.js { render 'wrong', :content_type=>'text/html', :layout=>false }
@@ -42,7 +42,7 @@ class QuizzesController < ApplicationController
 		end
 		
 		if @difficulty.to_i > 3
-			saveQuiz
+			saveQuiz(0)
 			redirect_to action: "win"
 			return
 		end
@@ -55,8 +55,8 @@ class QuizzesController < ApplicationController
 		end
 	end
 	
-	def saveQuiz
-		@quiz = Quiz.create(:finalDifficulty => @difficulty.to_i-1, :timestamp => Time.now)
+	def saveQuiz(lost)
+		@quiz = Quiz.create(:finalDifficulty => @difficulty.to_i-lost, :timestamp => Time.now)
 		@quiz.users << current_user
 		if(@teammate != "" && @teammate != nil)
 			@quiz.users << User.find(@teammate.to_i)
