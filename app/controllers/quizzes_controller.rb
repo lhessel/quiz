@@ -5,7 +5,7 @@ class QuizzesController < ApplicationController
   # GET /quizzes
   # GET /quizzes.json
   def index
-    @quizzes = Quiz.order('finalDifficulty DESC, timestamp DESC').all
+    @quizzes = Quiz.order('finalDifficulty DESC, timestamp DESC').all.paginate(:page => params[:page], :per_page => 20)
   end
 
   # GET /quizzes/1

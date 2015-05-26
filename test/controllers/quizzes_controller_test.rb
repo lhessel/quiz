@@ -69,7 +69,7 @@ class QuizzesControllerTest < ActionController::TestCase
 		end
 	end
 	
-	test "should win quizwith teammate" do
+	test "should win quiz with teammate" do
     assert_difference('Quiz.count') do
 			get :quiz, { :difficulty => 4, :question => @question.id, :answer => @question.correctAnswer, :teammate => @teammate}
 			assert_redirected_to(controller: "quizzes", action: "win")
@@ -80,7 +80,7 @@ class QuizzesControllerTest < ActionController::TestCase
     assert_difference('Quiz.count') do
 			get :quiz, { :difficulty => 2, :question => @question.id, :answer => 3}
 			assert_response :success
-			assert_select '.wrong_answer'
+			assert_select '#wrong_answer'
 		end
 	end
 end

@@ -5,7 +5,7 @@ class QuestionsController < ApplicationController
   # GET /questions
   # GET /questions.json
   def index
-    @questions = Question.all
+    @questions = Question.where(contributedBy: current_user.id).paginate(:page => params[:page], :per_page => 20)
   end
 
   # GET /questions/1
